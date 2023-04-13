@@ -15,6 +15,6 @@ This command installs a package and any packages that it depends on.
 
 This command builds the app for production to the `build` folder.
 
-After that you need to copy content of `build\statuc` folder 
-to WordPress ReactPress app directory `\wp-content\reactpress\apps` 
-on production server and setup Currncy converter at ReactPress admin page.
+After that you need to copy content of `build` folder 
+to WordPress ReactPress app directory `\wp-content\reactpress\apps\converter-widget-app` 
+on production server and setup Currncy converter at WordPress admin page.
