@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.errorMsg {
+  color: brown;
+}
+.divInRow {
+  display: inline-block;
+}
