@@ -91,6 +91,7 @@ const Converter = ({ testDate }) => {
           {format(date, 'yyyy-MM-dd') !== format(new Date(), 'yyyy-MM-dd') ? (
             <FaRegClock
               onClick={() => {
+                localStorage.setItem('date', new Date())
                 setDate(new Date())
               }}
               title="Reset to current date"
