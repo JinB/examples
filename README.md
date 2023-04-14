@@ -13,6 +13,8 @@
 
 [ReactJs Converter for WordPress CMS including tests](/converter-widget-app/)
 
+- `jenkins-pipeline.txt` - Jenkins CI/CD pipeline configuration script for ReactJs Converter application
+
 ### Other source code samples
 
 - `class-wp-widget-converter.php` - WordPress custom widget
