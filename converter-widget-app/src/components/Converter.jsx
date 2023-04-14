@@ -7,13 +7,18 @@ import { FaRegClock } from 'react-icons/fa'
 
 const API_URL = 'https://demo.4dates.net/rate?date='
 
-const Converter = () => {
+const Converter = ({ testDate }) => {
   const [errorTxt, setErrorTxt] = useState()
-  const [date, setDate] = useState(
-    localStorage.getItem('date') !== null
-      ? new Date(localStorage.getItem('date'))
-      : new Date()
-  )
+  const getInitDate = () => {
+    if (testDate !== undefined) {
+      return new Date(testDate)
+    } else {
+      return localStorage.getItem('date') !== null
+        ? new Date(localStorage.getItem('date'))
+        : new Date()
+    }
+  }
+  const [date, setDate] = useState(getInitDate())
   const convertFromUSD = true
   const [rate, setRate] = useState(0)
   const [amount, setAmount] = useState(
@@ -70,8 +75,8 @@ const Converter = () => {
       <div>
         <div className="divInRow">
           <DatePicker
-            className="divInRow"
             id="datePicker"
+            title="datePicker"
             selected={date}
             dateFormat="yyyy-MM-dd"
             maxDate={new Date()}
@@ -96,7 +101,14 @@ const Converter = () => {
         </div>
       </div>
       <label htmlFor="amount">
-        ČNB rate USD/CZK: {isLoading || errorTxt ? '...' : rate}
+        ČNB rate USD/CZK:{' '}
+        {isLoading || errorTxt ? (
+          '...'
+        ) : (
+          <span data-testid="rate" rate={rate}>
+            {rate}
+          </span>
+        )}
       </label>
       <br />
       {errorTxt ? (
@@ -104,6 +116,7 @@ const Converter = () => {
       ) : (
         <NumericFormat
           id="amount"
+          title="amount"
           value={amount}
           allowNegative={false}
           thousandSeparator=","
@@ -115,11 +128,13 @@ const Converter = () => {
         />
       )}
       <br />
-      {convertResult
-        ? ` = ${convertResult.toLocaleString()} ${
-            convertFromUSD ? 'CZK' : 'USD'
-          }`
-        : ''}
+      {convertResult ? (
+        <span data-testid="result" result={convertResult.toLocaleString()}>
+          {convertResult.toLocaleString()} {convertFromUSD ? 'CZK' : 'USD'}
+        </span>
+      ) : (
+        ''
+      )}
     </>
   )
 }
