@@ -130,7 +130,7 @@ const Converter = ({ testDate }) => {
       <br />
       {convertResult ? (
         <span data-testid="result" result={convertResult.toLocaleString()}>
-          {convertResult.toLocaleString()} {convertFromUSD ? 'CZK' : 'USD'}
+          ={convertResult.toLocaleString()} {convertFromUSD ? 'CZK' : 'USD'}
         </span>
       ) : (
         ''
