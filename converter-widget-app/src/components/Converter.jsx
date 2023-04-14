@@ -29,6 +29,7 @@ const Converter = () => {
       `performConvert(): amount ${amount}, rate: ${rate}, result: ${tmpRes}`
     )
     setConvertResult(tmpRes)
+    document.getElementById('amount').focus()
   }
 
   useEffect(() => {
