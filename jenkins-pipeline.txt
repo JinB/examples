@@ -1,0 +1,49 @@
+pipeline {
+    agent any 
+    stages {
+        stage('Clone') { 
+            steps {
+                git branch: 'main', url: 'https://github.com/JinB/examples'
+            }
+        }
+        stage('Install') { 
+            steps {
+                dir("converter-widget-app") {
+                    sh 'npm i'
+                }
+            }
+        }
+        stage('Build') { 
+            steps {
+                dir("converter-widget-app") {
+                    sh 'npm run build'
+                }
+            }
+        }
+        stage('Test') { 
+            steps {
+                dir("converter-widget-app") {
+                    sh 'npm test'
+				}
+            }
+        }
+        stage('Deploy') { 
+            steps {
+                dir("converter-widget-app") {
+                    sh 'rm -rf /some-path/build'
+                    sh 'cp -r build /some-path/converter-widget-app/'
+				}
+				// copy zip archive to demo page
+				sh 'wget -O /some-path/examples-main.zip  https://github.com/JinB/examples/archive/refs/heads/main.zip'
+            }
+        }
+    }
+    post {
+        always {
+            emailext from: 'jin@email.cz', to: 'jin@email.cz',
+            subject: "${env.JOB_NAME} - build ${env.BUILD_NUMBER}: ${currentBuild.currentResult}",
+            body: "${currentBuild.currentResult}: Job: ${env.JOB_NAME}, build: ${env.BUILD_NUMBER}\nMore Info can be found here: ${env.BUILD_URL}",
+            attachLog: true
+        }
+    }
+}
