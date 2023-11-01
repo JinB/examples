@@ -1,10 +1,10 @@
+
 # Eugenio's demo stuff
 
 ## Live demos
-
+- [BoatyBall reservation system](https://demo.4dates.net/bball): Frontend on AWS: React, MobX state management, Material UI component library, Axios HTTP client, Nginx
 - [ReactJS demo](https://demo.4dates.net/react): MERN stack : NoSQL DB - MongoDB 6.0, Mongoose 7.0, Express.js 4.18.2, React.js 18.2, Node.js 19.6
 - [PHP Yii2 MVC framework demo](https://demo.4dates.net/mvc): LAMP stack: Ubuntu 20.04, Nginx 1.18, SQL DB - MariaDB 1.10.6, PHP, Yii 2.0.47
-- [WordPress Currency converter widget (PHP/React)](http://test.4dates.net/): WordPress 6.2, PHP, React, REST API
 - [ETL / Apache Nifi demo](https://demo.4dates.net/nifi): JDK 11 - OpenJDK, Apache NiFi 1.20.0, Jetty 9.4.50
 
 ## Source code
@@ -17,6 +17,9 @@
 
 ### Other source code samples
 
+- `Amazon_Cognito-user-pool.tf` - IaC Terraform: Amazon Cognito User pool / OAuth 2.0 Google identity provider
+- `AWS_Lambda-triggers.tf` - IaC Terraform: AWS lambda (*.mjs) creation script
+- `BallDetails.js` - React source code of the [first screenshot](https://demo.4dates.net/bball) of BoatyBall demo
 - `class-wp-widget-converter.php` - WordPress custom widget
 - `drive.py` - Python: Google Workspace API: command-line app working with Drive API
 - `HookAction.php` - PHP: Telegram Bot API implementation over webhooks
