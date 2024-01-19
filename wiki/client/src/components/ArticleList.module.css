@@ -1,0 +1,40 @@
+.main {
+    width: 500px;
+    background-color: aliceblue;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+}
+.list {
+    height: 800px; 
+    border: 1px solid darkgray;
+}
+.row {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    border-bottom: 1px solid darkgray;
+}
+.rowTitle {
+    height: 25px; 
+    text-align: left;
+    margin-left: 10px; 
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.rowStats {
+    height: 25px; 
+    font-style: italic;
+}
+.rowArticle {
+    height: 200px;
+}
+
+@media only screen and (max-width: 400px) {
+    .main {
+        width: 100vw;
+    }
+    .list {
+        height: 450px; 
+    }
+}

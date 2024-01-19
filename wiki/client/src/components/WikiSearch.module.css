@@ -1,0 +1,48 @@
+.mainPanel {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-bottom: 200px;
+}
+.searchPanel {
+    width: 300px;
+}
+.userPanel {
+    display: flex;
+    flex-direction: row;
+}
+.userRadio {
+    margin-left: 2vw;
+}
+.articlePanel {
+    text-align: left;
+    padding: 20px;
+    width: 90vw;
+}
+
+@media only screen and (max-width: 400px) {
+    .mainPanel {
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+    .searchPanel {
+        width: 98vw;
+    }
+    .articlePanel {
+        padding: 10px 0 0 0;
+    }
+    ul {
+        padding-inline-start: 20px;
+        margin-block-start: 0;
+    }
+    h3 {
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+    h4 {
+        text-align: center;
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+
+}
