@@ -11,7 +11,7 @@
 
 ### High-Performance Wikipedia Search and Analysis Tool 
 
-complete ready to run source code of React SPA [Wikipedia Search](/wiki) server and client: [here at GitHub](https://wiki.4dates.net/)
+Complete ready to run source code of React SPA [Wikipedia Search](https://wiki.4dates.net/) server and client: [here at GitHub](/wiki)
 
 ### Other source code samples
 - `Amazon_Cognito-user-pool.tf` - IaC Terraform: Amazon Cognito User pool / OAuth 2.0 Google identity provider
