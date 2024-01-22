@@ -1,21 +1,22 @@
-import { useRef } from 'react'
 import { FixedSizeList } from 'react-window'
 import AutoSizer from 'react-virtualized-auto-sizer'
 import parse from 'html-react-parser'
 
+import { useWikiSearchContext } from '../WikiSearch/WikiSearchProvider'
 import styles from './ArticleList.module.css'
 
-export default function ArticleList({ list, dispatch }) {
-    const listRef = useRef()
-    const searchInfo = list.query.searchinfo
-    const search = list.query.search
+export default function ArticleList() {
+    const { state, actions } = useWikiSearchContext()
+    const { list } = state
+    const { body, time } = list
+    const { searchinfo: searchInfo, search } = body
     // console.log('ArticleList(): search:', search)
 
     const renderRow = ({ index, style }) => (
         <div className={styles.row} style={{ ...style }}>
             <div
                 onClick={() => {
-                    dispatch({ type: 'setPageId', value: search[index].pageid })
+                    actions.setPage(search[index])
                 }}
                 className={styles.rowTitle}
             >
@@ -36,7 +37,7 @@ export default function ArticleList({ list, dispatch }) {
                 <div>No results</div>
             ) : (
                 <div>
-                    Total hits: {searchInfo.totalhits}, showing first: {search.length}
+                    Hits: {searchInfo.totalhits}, showing: {search.length}, load time: {`${time}ms`}
                 </div>
             )}
             <div className={styles.list}>

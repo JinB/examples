@@ -7,9 +7,14 @@
 .row {
     text-align: left;
     margin-left: 10px;
-    color: blue;
     cursor: pointer;
     text-decoration: underline; 
+}
+.unvisited {
+    color: #1976d2;
+}
+.visited {
+    color: #795cb2;
 }
 .rowTitle {
     border-bottom: 1px solid darkgray;

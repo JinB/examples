@@ -3,15 +3,17 @@ import { debounce } from 'lodash'
 import Input from '@mui/material/Input'
 import { FaSearch, FaHistory, FaWindowClose } from 'react-icons/fa'
 
+import { useWikiSearchContext } from '../WikiSearch/WikiSearchProvider'
 import styles from './InputForm.module.css'
 
-export default function InputForm({ dispatch, disabled }) {
+export default function InputForm({ disabled }) {
+    const { actions } = useWikiSearchContext()
     const inputRef = useRef()
-    const [phrase, setPhrase] = useState('')
+    const [phrase, setPhraseLocal] = useState('')
 
     const handleGetSuggestions = useCallback(() => {
         // console.log('handleGetSuggestions(): value: ', inputRef.current.value)
-        dispatch({ type: 'setPhrase', value: inputRef.current.value })
+        actions.setPhrase(inputRef.current.value)
     }, [])
 
     const debouncedSearch = useMemo(() => {
@@ -19,34 +21,34 @@ export default function InputForm({ dispatch, disabled }) {
     }, [handleGetSuggestions])
 
     const handleChange = (e) => {
-        setPhrase(e.target.value)
-        debouncedSearch(phrase)
+        setPhraseLocal(e.target.value)
+        debouncedSearch(e.target.value)
     }
 
     const handleKeyDown = (e) => {
         if (/^Enter$/.test(e.code)) {
             const value = inputRef.current.value
             console.log('handleClick(): key code:', e.code, 'value:', value)
-            dispatch({ type: 'setPageId', value: value })
+            actions.setPage({ title: value, pageid: 0 })
         }
     }
 
     const handleClear = () => {
-        setPhrase('')
-        dispatch({ type: 'show', value: null })
+        setPhraseLocal('')
+        actions.setExpanded(null)
     }
 
     const handleHistory = () => {
         if (!disabled) {
-            setPhrase('')
-            dispatch({ type: 'toggleHistory' })
+            setPhraseLocal('')
+            actions.toggleHistory()
         }
     }
 
     const handleStartSearch = () => {
         // console.log('handleStartSearch(): start')
         const value = inputRef.current.value
-        dispatch({ type: 'setPageId', value: value })
+        actions.setPage({ title: value, pageid: 0 })
     }
 
     return (

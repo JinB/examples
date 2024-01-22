@@ -1,6 +1,7 @@
 package-lock.json
 readme.txt
-run-server.bat
+server.bat
+client.bat
 
 # Logs
 logs
