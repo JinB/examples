@@ -110,7 +110,7 @@ app.get('/v1/page', async (req, res) => {
             res.send(cache.storage[cache.PAGES].get(pageId))
             return
         }
-        var params = new URLSearchParams({
+        const params1 = new URLSearchParams({
             format: 'json',
             action: 'query',
             prop: 'info',
@@ -118,18 +118,18 @@ app.get('/v1/page', async (req, res) => {
             inprop: 'url',
         })
 
-        const response1 = await fetch(`${wikiApiUrl}?${params}`)
+        const response1 = await fetch(`${wikiApiUrl}?${params1}`)
         const json1 = await response1.json()
         const fullUrl = json1.query.pages[pageId].fullurl
         const title = json1.query.pages[pageId].title
         logger.info('/page: fullUrl: %s', fullUrl)
         logger.info('/page: title: %s', title)
-        params = new URLSearchParams({
+        const params2 = new URLSearchParams({
             action: 'parse',
             page: title,
             format: 'json',
         })
-        const response2 = await fetch(`${wikiApiUrl}?${params}`)
+        const response2 = await fetch(`${wikiApiUrl}?${params2}`)
         const json2 = await response2.json()
         const text = json2.parse.text['*']
         logger.info('/page: original text length: %s bytes', text.length)
