@@ -1,0 +1,33 @@
+:root {
+  --primay: black;
+  --bg-primay: white;
+  --link: #2a0b0b;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  font-size: 1.8rem;
+  padding: 20px 10px 10px 0;
+}
+.header2{
+  font-size: 1.2rem;
+}
+.header3{
+  font-size: 1.4rem;
+}
+.body {
+  padding: 10px;
+  font-size: 1.9rem;
+}
+.AppLink{
+  color:blue;
+}
+.footer {
+  font-size: 1rem;
+}

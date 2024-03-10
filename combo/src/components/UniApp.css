@@ -1,0 +1,10 @@
+.UniAppContainer {
+    padding: 10px;
+    width: 320px;
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+.UniAppSubmitButton{
+    margin-top: 10px;
+}
