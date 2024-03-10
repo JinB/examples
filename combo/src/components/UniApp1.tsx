@@ -25,6 +25,7 @@ const UniApp1 = () => {
         handleSubmit,
         formState: { errors },
         setValue,
+        getValues,
     } = useForm({
         defaultValues: {
             name: '',
@@ -32,9 +33,8 @@ const UniApp1 = () => {
         },
     })
     const onSubmit: SubmitHandler<IUniAppFormInputs> = (formData) => {
-        const uniName = data[formData.uni].name
-        // console.log('onSubmit(): form data:', formData, ', uni name:', uniName)
-        actions.setInfo({ name: formData.name, uni: uniName })
+        // console.log('onSubmit(): form data:', formData, ', uni name:', formData.uni)
+        actions.setInfo({ name: formData.name, uni: formData.uni })
         setValue('name', '')
         setValue('uni', '')
     }
@@ -98,16 +98,16 @@ const UniApp1 = () => {
                             <Autocomplete
                                 openOnFocus
                                 selectOnFocus
+                                value={getValues('uni')}
                                 options={data.map((option: any) => option.name)}
                                 isOptionEqualToValue={(option: any, value: any) => {
-                                    return option.name === value.name
+                                    return option === value
                                 }}
                                 getOptionLabel={(option: any) => {
-                                    if (typeof option === 'number') {
-                                        return data[option].name
-                                    } else {
-                                        return option
+                                    if (typeof option === 'string') {
+                                        setValue('uni', option)
                                     }
+                                    return option
                                 }}
                                 renderInput={(params) => (
                                     <TextField
@@ -118,7 +118,7 @@ const UniApp1 = () => {
                                         error={!!errors.uni}
                                     />
                                 )}
-                                {...field}
+                                // {...field}
                             />
                         )}
                     />
